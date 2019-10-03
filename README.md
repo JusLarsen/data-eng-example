@@ -1,7 +1,7 @@
 ### Tools Used
 I used the following tools:
-* Pipenv - lets me separate dev and build dependencies for compacting lambda deploys.
-* serverless - a framework built on node for generating and deploying cloudformation templates.
+* [Pipenv](https://pipenv-fork.readthedocs.io/en/latest/) - lets me separate dev and build dependencies for compacting lambda deploys.
+* [serverless](https://serverless.com) - a framework built on node for generating and deploying cloudformation templates.
 
 ### Pre-requisites 
 * Install pipenv:  `brew install pipenv`
