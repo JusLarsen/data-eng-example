@@ -32,7 +32,6 @@ def prepare_relationships_for_insertion(input_lines):
         A dictionary of the form {"noun": "children"[]}
     """
     combined_lines = input_lines
-    print(combined_lines)
     raw_relationships = combined_lines.split(',')
     valid_relationships = filter(_is_valid, raw_relationships)
     relationship_arrays = map(_extract_objects, valid_relationships)
