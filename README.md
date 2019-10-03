@@ -1,4 +1,5 @@
-## Summary
+## Overview
+![diagram](hw-architecture.png)
 This tool waits for a file to land on an s3 bucket. Currently the name is hardcoded, but it could easily be parameterized in the serverless file if I had more time. When a file lands on the bucket, it's read by a python lambda. After the file is read, it's inserted into a dynamodb table with the schema:
 
 ```
