@@ -4,7 +4,8 @@
   "description": "A sample app showing basics of infrastructure management",
   "main": "file_importer.py",
   "scripts": {
-    "pylint": "pipenv run pylint ./"
+    "pylint": "pipenv run pylint file_importer.py",
+    "test": "pipenv run pytest -p no:warnings"
   },
   "author": "Justin Larsen",
   "license": "ISC",

@@ -1,3 +1,16 @@
+## Summary
+This tool waits for a file to land on an s3 bucket. Currently the name is hardcoded, but it could easily be parameterized in the serverless file if I had more time. When a file lands on the bucket, it's read by a python lambda. After the file is read, it's inserted into a dynamodb table with the schema:
+
+```
+{ 
+    "name": <noun>,
+    "children": [<noun>]
+}
+```
+
+As each file is processed, the most current information will override a record in the dynamodb table. If we wanted to incur the cost of a read and a write, we could perform an upsert instead.
+
+
 ### Tools Used
 I used the following tools:
 * Pipenv - lets me separate dev and build dependencies for compacting lambda deploys.
@@ -19,4 +32,5 @@ This service creates the following resources:
 ### Commands 
 * Validate Linting: `npm run pylint`
 * Validate serverless config: `pipenv run $(npm bin)/serverless deploy --stage dev --noDeploy`
+* Run Tests: `npm run test`
 * Deploy stack: `pipenv run $(npm bin)/serverless deploy --stage dev`
