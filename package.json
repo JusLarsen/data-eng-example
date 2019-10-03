@@ -1,0 +1,19 @@
+{
+  "name": "divvy-data-eng-hw",
+  "version": "1.0.0",
+  "description": "A sample app showing basics of infrastructure management",
+  "main": "file_importer.py",
+  "scripts": {
+    "pylint": "pipenv run pylint ./"
+  },
+  "author": "Justin Larsen",
+  "license": "ISC",
+  "dependencies": {
+    "serverless": "^1.53.0",
+    "serverless-offline": "^5.11.0",
+    "serverless-python-requirements": "^5.0.0"
+  },
+  "devDependencies": {
+    "serverless-iam-roles-per-function": "^2.0.2"
+  }
+}

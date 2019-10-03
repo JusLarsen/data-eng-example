@@ -1,0 +1,43 @@
+service: file-ingestion
+
+provider:
+  name: aws
+  region: us-east-1
+  stage: stg
+  runtime: python3.6
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+
+functions:
+  file-to-dynamo:
+    name: file-to-dynamo
+    handler: file_importer.lambda_handler
+    timeout: 300
+    events:
+      - s3:
+          bucket: relationship-file-lz
+          events:
+            - s3:ObjectCreated:*
+
+resources:
+  Resources:
+    FileProcessingTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: object_relationships
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  pythonRequirements:
+    dockerizePip: non-linux
